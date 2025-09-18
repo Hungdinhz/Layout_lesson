@@ -20,8 +20,15 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Set up default route for MVC
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Set up area route for admin area
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
